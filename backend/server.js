@@ -1,6 +1,12 @@
 const app = require("./app");
 const { connectDatabase } = require("./config/database");
 const cloudinary = require("cloudinary");
+// server.js
+const mongoose = require('mongoose');
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
+
 connectDatabase();
 
 cloudinary.config({
